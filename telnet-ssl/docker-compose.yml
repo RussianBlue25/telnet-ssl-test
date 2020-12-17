@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  telnet-server:
+    container_name: telnet-ssl-server
+    build:
+      context: ./telnet-server
+      dockerfile: Dockerfile
+    tty: true
+    privileged: true
+    volumes:
+      - ./pcap/:/tmp/pcap
+    command: bash -c "/etc/init.d/openbsd-inetd start && tcpdump -i eth0 -X -s 0 -w /tmp/pcap/telnet-ssl.pcap"
+
+  telnet-client:
+    container_name: telnet-ssl-client
+    build: 
+      context: ./telnet-client
+      dockerfile: Dockerfile
+    tty: true
