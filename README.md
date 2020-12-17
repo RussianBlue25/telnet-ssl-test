@@ -12,9 +12,9 @@ docker-compose up -d
 
 ## client
 ```
-docker exec -it telnet-client bash
+docker exec -it telnet-ssl-client bash # If you test normal telnet, change telnet-ssl to telnet-normal.
 
-$ telnet telnet-server 23 
+$ telnet telnet-ssl-server 23 # If you test normal telnet, change telnet-ssl to telnet-normal.
 ```
 Both telnet-ssl and telnet-normal are the same command.
 User for telnet is "docker", its password is "docker", too.
